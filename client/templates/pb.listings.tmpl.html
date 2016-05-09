@@ -1,0 +1,23 @@
+<div>
+
+  <div class="list-group">
+    <a href="#" class="list-group-item" ng-repeat="listing in listingCount =
+                                        ( listings.displayResults.slice(
+                                          ( listings.currentPage-1) * listings.maxSize,
+                                            listings.currentPage * listings.maxSize) )">
+      <h4 class="list-group-item-heading"> {{listing.name}} </h4>
+      <p class="list-group-item-text"> {{listing.number}} </p>
+    </a>
+  </div>
+
+  <uib-pagination total-items="search.data.resultCount || listings.totalItems"
+                  ng-model="listings.currentPage"
+                  ng-change="listings.pageChanged()"></uib-pagination>
+
+  <div class="list-group" ng-hide="listingCount.length > 0">
+    <a href="#" class="list-group-item">
+      <h4 class="list-group-item-heading">Sorry, couldn't find a number for: <b>{{search.lastSearchedName}}</b></h4>
+    </a>
+  </div>
+
+</div>

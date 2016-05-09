@@ -1,0 +1,36 @@
+<div class="container">
+
+  <div class="row">
+    <h1>Phonebook App <small>Search by Name</small></h1>
+  </div>
+
+  <form novalidate ng-submit="search.findNumber()">
+    <div class="row">
+      <div class="input-group">
+        <input type="text" class="form-control"
+               placeholder="Search by name..."
+               ng-model="search.name">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="submit"> Find Number! </button>
+        </span>
+      </div>
+    </div>
+  </form>
+
+  <div class="row">
+    <h3>Search Results
+      <small>
+        total count:
+        {{search.data.resultCount >= 0 ? search.data.resultCount : listings.totalItems }}
+      </small>
+    </h3>
+    <app-pb-listings
+      display-results="search.data.results"></app-pb-listings>
+  </div>
+
+  <div class="row">
+    <h4>Angular Model (Debug)</h4>
+    <pre><code>{{search.data.results | json}}</code></pre>
+  </div>
+
+</div>
