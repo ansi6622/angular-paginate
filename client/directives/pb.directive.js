@@ -18,11 +18,14 @@ angular.module('AppExample')
         scope.search.data = {};
 
         scope.search.findNumber = function () {
-          var n = name || scope.search.name;
+          var results, n = name || scope.search.name;
           scope.search.lastSearchedName = angular.copy(scope.search.name);
-          scope.search.data.results = pb.findNumberByName(n);
-          scope.search.data.resultCount = scope.search.data.results.length;
+          results = pb.findNumberByName(n);
+          scope.search.data.results = results;
+          scope.listings.totalItems = results.length;
+          scope.listings.currentPage = 1;
         };
+
       }
     }
 
@@ -39,14 +42,15 @@ angular.module('AppExample')
       templateUrl: 'templates/pb.listings.tmpl.html',
       link: function (scope, el, attrs, fn) {
         var results = scope.displayResults || pb.listings;
+
         scope.listings.displayResults = results;
         scope.listings.totalItems = results.length;
         scope.listings.currentPage = 1;
         scope.listings.maxSize = 10;
 
         scope.listings.pageChanged = function () {
-          console.log('fired');
-        }
+        };
+
       }
     }
 

@@ -10,7 +10,8 @@
     </a>
   </div>
 
-  <uib-pagination total-items="search.data.resultCount || listings.totalItems"
+  <uib-pagination ng-hide="listingCount.length <= 0"
+                  total-items="listings.totalItems"
                   ng-model="listings.currentPage"
                   ng-change="listings.pageChanged()"></uib-pagination>
 
